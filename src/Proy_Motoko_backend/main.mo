@@ -73,4 +73,17 @@ actor Biblioteca {
     };
   };
 
+  //lisatar libros
+  public query func listarLibrosPrestados(): async [Libro]{
+    let prestamos = Iter.filter(
+      libros.entries(),
+      func((_,libro): (IDLibro, Libro)): Bool{
+        return libro.prestado;
+      }
+    );
+    return Iter.toArray(
+      Iter.map(prestamos, func((_,libro): (IDLibro,Libro)): Libro{libro})
+    );
+  };
+
 };
