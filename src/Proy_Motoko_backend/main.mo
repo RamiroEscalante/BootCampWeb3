@@ -86,4 +86,14 @@ actor Biblioteca {
     );
   };
 
+  public query func cantidadLibrosPrestados(): async Nat{
+    let libroPrestado = Iter.filter(
+      libros.entries(),
+      func((_,libro): (IDLibro, Libro)): Bool{
+        return libro.prestado;
+      }
+    );
+    return Iter.size(libroPrestado);
+  };
+
 };
