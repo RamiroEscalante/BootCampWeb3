@@ -21,6 +21,7 @@ actor Biblioteca {
 
   let libros = HashMap.HashMap<IDLibro, Libro>(0, Text.equal, Text.hash);
 
+
   //creamos un libor
   public func crearUnLibro(id : IDLibro, libro : Libro) {
     libros.put(id, libro);
